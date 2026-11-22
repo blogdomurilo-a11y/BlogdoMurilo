@@ -1,6 +1,5 @@
 # ============================================================
 #  Configuração do blog (Jekyll + GitHub Pages)
-#  Edite os campos abaixo com os seus dados.
 # ============================================================
 
 title: Cartas & Mapas
@@ -16,24 +15,16 @@ author:
   bio: Escrevo sobre geografia, lugares e o que acontece entre um mapa e outro.
   email: voce@exemplo.com
 
-# --- URL do site ---------------------------------------------
-# Se o repositório se chama  SEU-USUARIO.github.io  →  baseurl: ""
-# Se o repositório tem outro nome (ex.: meu-blog)    →  baseurl: "/meu-blog"
-url: "https://SEU-USUARIO.github.io"
+# Repositório chamado blogdomurilo-a11y.github.io  →  baseurl vazio
+url: "https://blogdomurilo-a11y.github.io"
 baseurl: ""
 
-# --- Redes (opcional, deixe vazio para ocultar) --------------
 github_username: ""
 instagram_username: ""
 
-# --- Newsletter (opcional) -------------------------------------
-# Deixe vazio para mostrar apenas o botão "Assinar por RSS".
-# Para receber e-mails de assinantes, crie uma conta gratuita em um serviço
-# como Buttondown e cole aqui o endereço do formulário. Exemplo:
-# newsletter_action: "https://buttondown.com/api/emails/embed-subscribe/SEU-USUARIO"
+# Newsletter (opcional): deixe vazio para mostrar só o botão de RSS.
 newsletter_action: ""
 
-# --- Posts ---------------------------------------------------
 permalink: /:categories/:year/:month/:slug/
 markdown: kramdown
 highlighter: rouge
@@ -41,7 +32,7 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-# --- Paginação da página inicial (8 textos por página) ---------
+# Paginação da página inicial (8 textos por página)
 paginate: 8
 paginate_path: "/pagina:num/"
 
