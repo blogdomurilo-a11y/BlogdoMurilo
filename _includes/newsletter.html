@@ -1,0 +1,26 @@
+{%- if include.variante == "rodape" -%}
+  {%- if site.newsletter_action and site.newsletter_action != "" -%}
+  <p class="rodape-desc">Receba os novos textos por e-mail.</p>
+  <form class="nl-rodape" action="{{ site.newsletter_action }}" method="post" target="_blank">
+    <input type="email" name="email" placeholder="Seu e-mail" aria-label="Seu e-mail" required>
+    <button type="submit" aria-label="Inscrever-se">→</button>
+  </form>
+  {%- else -%}
+  <p class="rodape-desc">Novos textos direto no seu leitor de feeds.</p>
+  <a class="btn btn-claro" href="{{ '/feed.xml' | relative_url }}">Assinar por RSS →</a>
+  {%- endif -%}
+{%- else -%}
+<aside class="nl-caixa">
+  <p class="rotulo">Acompanhe</p>
+  <h3>Seja o <em>primeiro</em> a ler os novos textos.</h3>
+  {%- if site.newsletter_action and site.newsletter_action != "" %}
+  <form class="form-nl" action="{{ site.newsletter_action }}" method="post" target="_blank">
+    <input type="email" name="email" placeholder="Seu e-mail" aria-label="Seu e-mail" required>
+    <button class="btn btn-solido" type="submit">Inscrever-se</button>
+  </form>
+  {%- else %}
+  <p>Assine o feed RSS e receba cada novo texto no seu leitor favorito.</p>
+  <p><a class="btn btn-solido" href="{{ '/feed.xml' | relative_url }}">Assinar por RSS</a></p>
+  {%- endif %}
+</aside>
+{%- endif -%}

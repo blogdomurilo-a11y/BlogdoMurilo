@@ -1,0 +1,6 @@
+<nav class="chips" aria-label="Filtrar por seção">
+  <a class="chip" href="{{ '/' | relative_url }}"{% if include.atual == 'todos' %} aria-current="page"{% endif %}>Todos</a>
+  {%- for c in site.data.categorias %}
+  <a class="chip" href="{{ '/' | append: c[0] | append: '/' | relative_url }}"{% if include.atual == c[0] %} aria-current="page"{% endif %}>{{ c[1].nome }}</a>
+  {%- endfor %}
+</nav>

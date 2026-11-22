@@ -26,6 +26,13 @@ baseurl: ""
 github_username: ""
 instagram_username: ""
 
+# --- Newsletter (opcional) -------------------------------------
+# Deixe vazio para mostrar apenas o botão "Assinar por RSS".
+# Para receber e-mails de assinantes, crie uma conta gratuita em um serviço
+# como Buttondown e cole aqui o endereço do formulário. Exemplo:
+# newsletter_action: "https://buttondown.com/api/emails/embed-subscribe/SEU-USUARIO"
+newsletter_action: ""
+
 # --- Posts ---------------------------------------------------
 permalink: /:categories/:year/:month/:slug/
 markdown: kramdown
@@ -34,10 +41,15 @@ kramdown:
   input: GFM
   hard_wrap: false
 
+# --- Paginação da página inicial (8 textos por página) ---------
+paginate: 8
+paginate_path: "/pagina:num/"
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate
 
 feed:
   path: feed.xml

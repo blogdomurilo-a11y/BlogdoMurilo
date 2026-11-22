@@ -3,19 +3,27 @@ layout: default
 ---
 {%- assign info = site.data.categorias[page.categoria] -%}
 {%- assign lista = site.categories[page.categoria] -%}
+{%- assign idx = 0 -%}
+{%- for c in site.data.categorias -%}
+  {%- if c[0] == page.categoria -%}{%- assign idx = forloop.index -%}{%- endif -%}
+{%- endfor -%}
 
-<header class="page-header">
-  <p class="eyebrow">{{ info.emoji }} Seção</p>
+<section class="bloco cab">
+  <div class="selo ilu ilu-{{ page.categoria }}" role="img" aria-label="Ilustração da seção {{ info.nome }}"></div>
+  <p class="rotulo">{% if idx < 10 %}0{% endif %}{{ idx }} // {{ info.nome }}</p>
   <h1>{{ info.nome }}</h1>
-  <p class="lead">{{ info.descricao }}</p>
-</header>
-
-{% if lista and lista.size > 0 %}
-<section class="cards">
-  {% for post in lista %}
-    {% include post-card.html post=post %}
-  {% endfor %}
+  <p class="hero-desc">{{ info.descricao }}</p>
+  {% include chips.html atual=page.categoria %}
 </section>
-{% else %}
-<p class="vazio">Ainda não há textos nesta seção. Em breve, por aqui.</p>
-{% endif %}
+
+<section class="sec">
+  {% if lista and lista.size > 0 %}
+  <div class="grade">
+    {% for post in lista %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="vazio">Ainda não há textos nesta seção. Em breve, por aqui.</p>
+  {% endif %}
+</section>

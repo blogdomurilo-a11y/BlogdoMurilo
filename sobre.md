@@ -3,12 +3,13 @@ layout: default
 title: Sobre
 permalink: /sobre/
 ---
-<header class="page-header">
-  <p class="eyebrow">Sobre</p>
+<section class="bloco cab">
+  <p class="rotulo">Sobre</p>
   <h1>Quem escreve por aqui</h1>
-</header>
+</section>
 
-<div class="post-body">
+<div class="sec post-corpo-wrap">
+<div class="post-corpo" markdown="1">
 
 Olá! Eu sou **{{ site.author.name }}**. {{ site.author.bio }}
 
@@ -21,4 +22,5 @@ Este blog reúne três tipos de texto:
 Para falar comigo, escreva para [{{ site.author.email }}](mailto:{{ site.author.email }}).
 Você também pode acompanhar as novidades pelo [feed RSS]({{ '/feed.xml' | relative_url }}).
 
+</div>
 </div>

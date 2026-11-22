@@ -2,29 +2,60 @@
 layout: default
 title: Início
 ---
-<section class="hero">
-  <p class="eyebrow">{{ site.tagline }}</p>
-  <h1>{{ site.description }}</h1>
+{%- assign lista = paginator.posts | default: site.posts -%}
+
+<section class="bloco hero">
+  <div class="hero-clip" aria-hidden="true"><div class="hero-ilu"></div></div>
+  <p class="rotulo">{{ site.tagline }}</p>
+  <h1>{{ site.title }}</h1>
+  <p class="hero-desc">{{ site.description }}</p>
+  {% include chips.html atual="todos" %}
 </section>
 
-<section class="secoes" aria-label="Seções do blog">
-  {% for c in site.data.categorias %}
-  <a class="secao" href="{{ '/' | append: c[0] | append: '/' | relative_url }}">
-    <span class="secao-emoji" aria-hidden="true">{{ c[1].emoji }}</span>
-    <strong>{{ c[1].nome }}</strong>
-    <span>{{ c[1].descricao }}</span>
-  </a>
-  {% endfor %}
-</section>
-
-<section>
-  <h2 class="section-title">Textos recentes</h2>
-  <div class="cards">
-    {% for post in site.posts limit: 8 %}
+<section class="sec">
+  {% if lista.size > 0 %}
+  <div class="grade">
+    {% for post in lista %}
       {% include post-card.html post=post %}
+      {% if forloop.index == 5 %}{% include newsletter.html %}{% endif %}
     {% endfor %}
+    {% if lista.size < 5 %}{% include newsletter.html %}{% endif %}
   </div>
-  {% if site.posts.size == 0 %}
+  {% else %}
   <p class="vazio">Ainda não há textos publicados.</p>
   {% endif %}
+
+  {% if paginator and paginator.total_pages > 1 %}
+  <nav class="pager" aria-label="Páginas">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}" aria-label="Página anterior">←</a>
+    {% else %}<span class="off">←</span>{% endif %}
+    {% for p in (1..paginator.total_pages) %}
+      {% if p == paginator.page %}<span class="atual" aria-current="page">{{ p }}</span>
+      {% elsif p == 1 %}<a href="{{ '/' | relative_url }}">{{ p }}</a>
+      {% else %}<a href="{{ site.paginate_path | replace: ':num', p | relative_url }}">{{ p }}</a>{% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}" aria-label="Próxima página">→</a>
+    {% else %}<span class="off">→</span>{% endif %}
+  </nav>
+  {% endif %}
+</section>
+
+<section class="sec secoes" aria-label="Seções do blog">
+  <div class="secoes-ilu">
+    <p class="rotulo">Seções</p>
+  </div>
+  <div class="celulas">
+    {%- for c in site.data.categorias %}
+    <a class="celula{% if forloop.first %} ativa{% endif %}" href="{{ '/' | append: c[0] | append: '/' | relative_url }}">
+      <span class="celula-topo"><span class="n">0{{ forloop.index }} //</span><span>{{ c[1].nome }}</span></span>
+      <p>{{ c[1].descricao }}</p>
+    </a>
+    {%- endfor %}
+    <a class="celula" href="{{ '/sobre/' | relative_url }}">
+      <span class="celula-topo"><span class="n">0{{ site.data.categorias.size | plus: 1 }} //</span><span>Sobre</span></span>
+      <p>Quem escreve por aqui e por que este blog existe.</p>
+    </a>
+  </div>
 </section>
