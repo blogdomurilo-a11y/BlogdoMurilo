@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'pt-BR' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.url != '/' %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧭%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+  {% seo %}
+  <script>
+    /* aplica o tema salvo antes de desenhar a página (evita "piscar") */
+    try {
+      var t = localStorage.getItem('tema');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <span class="brand-mark" aria-hidden="true">🧭</span>
+        <span class="brand-text">{{ site.title }}</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Início</a>
+        {% for c in site.data.categorias %}
+        <a href="{{ '/' | append: c[0] | append: '/' | relative_url }}"{% if page.categoria == c[0] %} aria-current="page"{% endif %}>{{ c[1].nome }}</a>
+        {% endfor %}
+        <a href="{{ '/sobre/' | relative_url }}"{% if page.url == '/sobre/' %} aria-current="page"{% endif %}>Sobre</a>
+        <button id="tema" class="tema" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="wrap">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© {{ 'now' | date: '%Y' }} {{ site.author.name }}. Todos os textos são de minha autoria.</p>
+      <p class="footer-links">
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        {% if site.github_username != "" %}· <a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
+        {% if site.instagram_username != "" %}· <a href="https://instagram.com/{{ site.instagram_username }}">Instagram</a>{% endif %}
+      </p>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/tema.js' | relative_url }}"></script>
+</body>
+</html>

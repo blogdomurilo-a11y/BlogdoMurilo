@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{%- assign info = site.data.categorias[page.categoria] -%}
+{%- assign lista = site.categories[page.categoria] -%}
+
+<header class="page-header">
+  <p class="eyebrow">{{ info.emoji }} Seção</p>
+  <h1>{{ info.nome }}</h1>
+  <p class="lead">{{ info.descricao }}</p>
+</header>
+
+{% if lista and lista.size > 0 %}
+<section class="cards">
+  {% for post in lista %}
+    {% include post-card.html post=post %}
+  {% endfor %}
+</section>
+{% else %}
+<p class="vazio">Ainda não há textos nesta seção. Em breve, por aqui.</p>
+{% endif %}

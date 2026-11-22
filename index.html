@@ -1,0 +1,30 @@
+---
+layout: default
+title: Início
+---
+<section class="hero">
+  <p class="eyebrow">{{ site.tagline }}</p>
+  <h1>{{ site.description }}</h1>
+</section>
+
+<section class="secoes" aria-label="Seções do blog">
+  {% for c in site.data.categorias %}
+  <a class="secao" href="{{ '/' | append: c[0] | append: '/' | relative_url }}">
+    <span class="secao-emoji" aria-hidden="true">{{ c[1].emoji }}</span>
+    <strong>{{ c[1].nome }}</strong>
+    <span>{{ c[1].descricao }}</span>
+  </a>
+  {% endfor %}
+</section>
+
+<section>
+  <h2 class="section-title">Textos recentes</h2>
+  <div class="cards">
+    {% for post in site.posts limit: 8 %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+  {% if site.posts.size == 0 %}
+  <p class="vazio">Ainda não há textos publicados.</p>
+  {% endif %}
+</section>

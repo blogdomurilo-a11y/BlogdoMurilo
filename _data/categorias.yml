@@ -1,0 +1,14 @@
+geografia:
+  nome: Geografia
+  emoji: "🗺️"
+  descricao: Paisagens, territórios, mapas e o modo como os lugares se formam e nos formam.
+
+ensaios:
+  nome: Ensaios
+  emoji: "✒️"
+  descricao: Textos mais longos para pensar com calma sobre espaço, memória e sociedade.
+
+cronicas:
+  nome: Crônicas
+  emoji: "☕"
+  descricao: Pequenas histórias do cotidiano, observadas de passagem.

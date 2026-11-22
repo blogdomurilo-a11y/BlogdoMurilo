@@ -1,0 +1,50 @@
+# ============================================================
+#  Configuração do blog (Jekyll + GitHub Pages)
+#  Edite os campos abaixo com os seus dados.
+# ============================================================
+
+title: Cartas & Mapas
+tagline: Geografia, ensaios e crônicas
+description: >-
+  Um blog de geografia, ensaios e crônicas: lugares, paisagens,
+  ideias e pequenas histórias do cotidiano.
+lang: pt-BR
+timezone: America/Sao_Paulo
+
+author:
+  name: Seu Nome
+  bio: Escrevo sobre geografia, lugares e o que acontece entre um mapa e outro.
+  email: voce@exemplo.com
+
+# --- URL do site ---------------------------------------------
+# Se o repositório se chama  SEU-USUARIO.github.io  →  baseurl: ""
+# Se o repositório tem outro nome (ex.: meu-blog)    →  baseurl: "/meu-blog"
+url: "https://SEU-USUARIO.github.io"
+baseurl: ""
+
+# --- Redes (opcional, deixe vazio para ocultar) --------------
+github_username: ""
+instagram_username: ""
+
+# --- Posts ---------------------------------------------------
+permalink: /:categories/:year/:month/:slug/
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

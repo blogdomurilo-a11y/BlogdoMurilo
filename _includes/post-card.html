@@ -1,0 +1,11 @@
+{%- assign post = include.post -%}
+{%- assign cat = post.categories | first -%}
+{%- assign info = site.data.categorias[cat] -%}
+<article class="card">
+  <div class="card-meta">
+    <a class="tag" href="{{ '/' | append: cat | append: '/' | relative_url }}">{{ info.emoji }} {{ info.nome | default: cat }}</a>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{% include data.html data=post.date %}</time>
+  </div>
+  <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+  <p class="card-excerpt">{{ post.description | default: post.excerpt | strip_html | truncatewords: 32 }}</p>
+</article>
